@@ -13,6 +13,6 @@ namespace Esport.Back.Domain
         public string Name { get; set; }
         public string Nickname { get; set; }
         public Team Team{ get; set; }
-        public Statistics Statistics { get; set; }
+        public List<StatByEntities> Statistics { get; set; }
     }
 }

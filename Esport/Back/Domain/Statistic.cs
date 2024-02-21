@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Esport.Back.Domain
 {
-    class Statistic
+    public class Statistic
     {
         public string Name{ get; set; }
         public string Type { get; set; }

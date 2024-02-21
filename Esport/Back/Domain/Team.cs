@@ -14,5 +14,7 @@ namespace Esport.Back.Domain
 
         public List<Player> Players { get; set; }
 
+        public List<StatByEntities> Statistics { get; set; }
+
     }
 }
