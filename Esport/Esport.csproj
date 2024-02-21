@@ -64,7 +64,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Back\" />
 	  <Folder Include="Front\Model\" />
 	  <Folder Include="Front\ViewModel\" />
 	  <Folder Include="Interface\" />
