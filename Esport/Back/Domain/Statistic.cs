@@ -6,13 +6,9 @@ using System.Threading.Tasks;
 
 namespace Esport.Back.Domain
 {
-    public class Team
+    class Statistic
     {
-        public int Id { get; set; }
-
-        public string Name { get; set; }
-
-        public List<Player> Players { get; set; }
-
+        public string Name{ get; set; }
+        public string Type { get; set; }
     }
 }
