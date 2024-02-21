@@ -1,4 +1,4 @@
-﻿namespace Esport.Front
+﻿namespace Esport.Front.View
 {
     public partial class MainPage : ContentPage
     {

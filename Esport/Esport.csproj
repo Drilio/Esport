@@ -57,15 +57,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <AndroidResource Remove="Front\View\**" />
-	  <Compile Remove="Front\View\**" />
-	  <EmbeddedResource Remove="Front\View\**" />
-	  <MauiCss Remove="Front\View\**" />
-	  <MauiXaml Remove="Front\View\**" />
-	  <None Remove="Front\View\**" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
