@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using Telerik.Maui.Controls.Compatibility;
 
 namespace Esport
 {
@@ -8,6 +9,7 @@ namespace Esport
         {
             var builder = MauiApp.CreateBuilder();
             builder
+                .UseTelerik()
                 .UseMauiApp<App>()
                 .ConfigureFonts(fonts =>
                 {
