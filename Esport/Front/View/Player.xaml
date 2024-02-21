@@ -16,11 +16,32 @@ xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"
             <telerik:RadEntry x:Name="Player_name"/>
             <Label Text="Pseudo du joueur" />
             <telerik:RadEntry x:Name="Username"/>
-            <Label Text="Equipe du joueur" />
-            <Picker Title="Team" />
-            <telerik:RadButton x:Name="button" Text="Envoyer" />
-            
+            <Picker Title="Team" ItemsSource="{Binding TeamList}"/>
+            <telerik:RadButton x:Name="button" Text="Creer" />
+
+            <telerik:RadListView x:Name="listView" ItemsSource="{Binding PlayerList}">
+                <telerik:RadListView.ItemTemplate>
+                    <DataTemplate>
+                        <telerik:ListViewTemplateCell>
+                            <telerik:ListViewTemplateCell.View>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <telerik:RadCheckBox x:Name="checkbox" Grid.Column="0" IsChecked="{Binding IsSelected}" />
+                                    <Label Grid.Column="1" Text="{Binding Name}" />
+                                    <telerik:RadButton Grid.Column="2" Text="Modifier" Command="" />
+                                </Grid>
+                            </telerik:ListViewTemplateCell.View>
+                        </telerik:ListViewTemplateCell>
+                    </DataTemplate>
+                </telerik:RadListView.ItemTemplate>
+            </telerik:RadListView>
+
+
         </VerticalStackLayout>
     </ScrollView>
-
 </ContentPage>
