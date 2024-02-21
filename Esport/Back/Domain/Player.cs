@@ -1,5 +1,4 @@
-﻿using Android.Hardware.Camera2;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,5 +13,6 @@ namespace Esport.Back.Domain
         public string Nickname { get; set; }
         public Team Team{ get; set; }
         public List<StatByEntities> Statistics { get; set; }
+        public List<Party>  Parties { get; set; }
     }
 }

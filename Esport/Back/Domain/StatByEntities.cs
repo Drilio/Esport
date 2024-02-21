@@ -10,9 +10,7 @@ namespace Esport.Back.Domain
     {
         public int Id { get; set; }
         public string Type{ get; set; }
-
         public object Entitie { get; set; }
-
         public int Value { get; set; }
     }
 }
