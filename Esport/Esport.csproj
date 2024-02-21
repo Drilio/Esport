@@ -63,4 +63,9 @@
 		<PackageReference Include="Telerik.UI.for.Maui.Trial" Version="6.7.0" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Back\" />
+	  <Folder Include="Interface\" />
+	</ItemGroup>
+
 </Project>
