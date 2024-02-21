@@ -20,8 +20,4 @@
                           ContentTemplate="{DataTemplate local:Statistics}" />
         </Tab>
     </FlyoutItem>
-    <!--<ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />-->
 </Shell>
