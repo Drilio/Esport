@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Esport.Front.View.Player">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+            <Label
+                Text="Formulaire de création de joueur"
+                Style="{StaticResource Headline}"
+                SemanticProperties.HeadingLevel="Level1" />
+            <Label Text="Nom du joueur" />
+            <telerik:RadEntry x:Name="Player_name"/>
+            <Label Text="Pseudo du joueur" />
+            <telerik:RadEntry x:Name="Username"/>
+            <Label Text="Equipe du joueur" />
+            <Picker Title="Team" />
+            <telerik:RadButton x:Name="button" Text="Envoyer" />
+            
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
