@@ -64,7 +64,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Back\" />
+	  <Folder Include="Back\Data\" />
+	  <Folder Include="Back\Service\" />
 	  <Folder Include="Front\Model\" />
 	  <Folder Include="Front\ViewModel\" />
 	  <Folder Include="Interface\" />
