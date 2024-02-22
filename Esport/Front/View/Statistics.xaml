@@ -6,7 +6,7 @@
              x:Class="Esport.Front.View.Statistics"            
              Title="Statistics">
     <ContentPage.BindingContext>
-        <ViewModel:Statistics/>
+        <ViewModel:StatisticsViewModel/>
     </ContentPage.BindingContext>
     <ContentPage.Resources>
         <LayoutOptions x:Key="horzOptions"
@@ -54,7 +54,9 @@
                     <Picker 
                         Grid.Row="2"
                         Grid.Column="1"
-                        ItemsSource="{Binding PickerGame}"/>
+                        ItemDisplayBinding="{Binding Title}"
+                        ItemsSource="{Binding PickerGame}">
+                    </Picker>
                     <Label 
                         Grid.Row="3"
                         Grid.Column="0"

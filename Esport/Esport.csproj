@@ -58,27 +58,21 @@
 
 	<ItemGroup>
 	  <AndroidResource Remove="Back\Data\**" />
-	  <AndroidResource Remove="Front\Model\**" />
 	  <AndroidResource Remove="Front\ViewModel\**" />
 	  <Compile Remove="Back\Data\**" />
-	  <Compile Remove="Front\Model\**" />
 	  <Compile Remove="Front\ViewModel\**" />
 	  <EmbeddedResource Remove="Back\Data\**" />
-	  <EmbeddedResource Remove="Front\Model\**" />
 	  <EmbeddedResource Remove="Front\ViewModel\**" />
 	  <MauiCss Remove="Back\Data\**" />
-	  <MauiCss Remove="Front\Model\**" />
 	  <MauiCss Remove="Front\ViewModel\**" />
 	  <MauiXaml Remove="Back\Data\**" />
-	  <MauiXaml Remove="Front\Model\**" />
 	  <MauiXaml Remove="Front\ViewModel\**" />
 	  <None Remove="Back\Data\**" />
-	  <None Remove="Front\Model\**" />
 	  <None Remove="Front\ViewModel\**" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Include="Front\ViewModel\Statistics.cs" />
+	  <Compile Include="Front\ViewModel\StatisticsViewModel.cs" />
 	</ItemGroup>
 
 	<ItemGroup>

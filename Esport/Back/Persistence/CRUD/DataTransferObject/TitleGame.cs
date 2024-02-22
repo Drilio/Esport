@@ -5,12 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Esport.Back.Service.CRUD.DataTransferObject
+namespace Esport.Back.Persistence.CRUD.DataTransferObject
 {
     public class TitleGame : ITitleGame
     {
         public string Title { get; set; }
-        public TitleGame(string Title) 
+        public TitleGame(string Title)
         {
             this.Title = Title;
         }
