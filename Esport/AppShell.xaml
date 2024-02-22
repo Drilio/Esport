@@ -6,6 +6,7 @@
     xmlns:local="clr-namespace:Esport.Front.View"
     Shell.FlyoutBehavior="Disabled"
     Title="Esport">
+
     <FlyoutItem Title="Esport" Route="Esport">
         <Tab Title="Players" Route="player">
             <ShellContent Route="playerContent" 
