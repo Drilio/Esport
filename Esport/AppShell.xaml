@@ -10,7 +10,7 @@
     <FlyoutItem Title="Esport" Route="Esport">
         <Tab Title="Players" Route="player">
             <ShellContent Route="playerContent" 
-                          ContentTemplate="{DataTemplate local:Players}" />
+                          ContentTemplate="{DataTemplate local:Player}" />
         </Tab>
         <Tab Title="Teams" Route="team">
             <ShellContent Route="teamContent" 
@@ -22,3 +22,4 @@
         </Tab>
     </FlyoutItem>
 </Shell>
+

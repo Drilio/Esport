@@ -72,6 +72,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Include="Front\ViewModel\PlayerViewModel.cs" />
 	  <Compile Include="Front\ViewModel\StatisticsViewModel.cs" />
 	</ItemGroup>
 
@@ -86,8 +87,8 @@
 	  <Compile Update="Front\View\Statistics.xaml.cs">
 	    <DependentUpon>Statistics.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Front\View\Players.xaml.cs">
-	    <DependentUpon>Players.xaml</DependentUpon>
+	  <Compile Update="Front\View\Player.xaml.cs">
+	    <DependentUpon>Player.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Front\View\Teams.xaml.cs">
 	    <DependentUpon>Teams.xaml</DependentUpon>

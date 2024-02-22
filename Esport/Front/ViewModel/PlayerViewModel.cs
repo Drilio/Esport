@@ -1,28 +1,17 @@
-﻿using Esport.Back.Services;
+﻿using Esport.Back.Service.Players;
 using Esport.Front.Model;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
-using Telerik.Maui.Controls;
 
 namespace Esport.Front.ViewModel
 {
-    internal class PlayerViewModel : INotifyPropertyChanged
+    public class PlayerViewModel:INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler? PropertyChanged;
-
         private readonly SPlayer servicePlayer;
-
-        public ObservableCollection<Player> Players { get; private set; }
-
-        public string Name { get; set; }
-        public string Username { get; set; }
-        public Team Team { get; set; }
-
-        public ICommand AddPlayerCommand { get; }
-        public ICommand ModifyPlayerCommand { get; }
-        public ICommand DeletePlayerCommand { get; }
+        public event PropertyChangedEventHandler PropertyChanged;
+        private readonly STeam serviceTeam;
 
         private Player _selectedPlayer;
         public Player SelectedPlayer
@@ -37,11 +26,51 @@ namespace Esport.Front.ViewModel
                 }
             }
         }
+        private Team _selectedTeam;
+        public Team SelectedTeam
+        {
+            get => _selectedTeam;
+            set
+            {
+                if (_selectedTeam != value)
+                {
+                    _selectedTeam = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+        public ObservableCollection<Player> Players { get; private set; }
+        public ObservableCollection<Team> Teams { get; private set; }
+        public string Name { get; set; }
+        public string Username { get; set; }
+        public ICommand AddPlayerCommand { get; }
+        public ICommand ModifyPlayerCommand { get; }
+        public ICommand DeletePlayerCommand { get; }
+        private bool _isSelected;
+        public bool IsSelected
+        {
+            get => _isSelected;
+            set
+            {
+                if (_isSelected != value)
+                {
+                    _isSelected = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
 
         public PlayerViewModel()
         {
             servicePlayer = new SPlayer();
-            Players = new ObservableCollection<Player>();
+            serviceTeam = new STeam();
+            Players = new ObservableCollection<Player>(servicePlayer.GetPlayer());
+            Teams = new ObservableCollection<Team>();
+            var allTeams = serviceTeam.GetTeams();
+            foreach (var team in allTeams)
+            {
+                Teams.Add(new Team(team.Name));
+            }
             AddPlayerCommand = new Command(AddPlayer);
             ModifyPlayerCommand = new Command(ModifyPlayer);
             DeletePlayerCommand = new Command(DeletePlayer);
@@ -49,17 +78,23 @@ namespace Esport.Front.ViewModel
 
         public void AddPlayer()
         {
-            servicePlayer.AddPlayer(Name, Username, Team);
-            Players.Add(new Player(Name, Username, Team));
-            ClearFields();
+            if (SelectedTeam != null)
+            {
+                servicePlayer.AddPlayer(Name, Username, SelectedTeam);
+                Players.Add(new Player(Name, Username, SelectedTeam));
+                ClearFields();
+            }
         }
 
         public void ModifyPlayer()
         {
-            servicePlayer.ModifyPlayer(SelectedPlayer.Id, Name, Username, Team);
-            SelectedPlayer.Name = Name;
-            SelectedPlayer.Username = Username;
-            SelectedPlayer.Team = Team;
+            if (SelectedPlayer != null && SelectedTeam != null)
+            {
+                servicePlayer.ModifyPlayer(SelectedPlayer.Id, Name, Username, SelectedTeam);
+                SelectedPlayer.Name = Name;
+                SelectedPlayer.Username = Username;
+                SelectedPlayer.Team = SelectedTeam;
+            }
         }
 
         public void DeletePlayer()
@@ -73,10 +108,10 @@ namespace Esport.Front.ViewModel
         {
             Name = string.Empty;
             Username = string.Empty;
-            Team = null;
+            SelectedTeam = null;
         }
 
-        protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }

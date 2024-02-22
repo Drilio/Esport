@@ -7,18 +7,19 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 using Telerik.Maui;
 
-namespace Esport.Back.Persistence
+namespace Esport.Back.Persistence.CRUD
 {
     public class PPlayer
     {
-        public  List<Player> Players { get; set; } = new List<Player>()
+        public List<Player> Players { get; set; } = new List<Player>()
         {
-            new Player("jojo", "bobo", new Team(1, "JU"))
+            new Player("jojo", "bobo", new Team("SKT T1"))
         };
+        
         public void AddPlayer(Player player)
         {
             Players.Add(player);
-            
+
             var t = SavePlayersAsync().Result;
         }
         public void ModifyPlayer(int id, string name, string username, Team team)
@@ -44,6 +45,12 @@ namespace Esport.Back.Persistence
                 }
             }
         }
+
+        public List<Player> GetAllPlayer()
+        {
+            return Players;
+        }
+
         private string filePath = "players.json";
 
         //Database

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Esport.Interface
 {
-    public class IPlayers
+    public interface IPlayers
     {
         int Id { get; set; }
         string Name { get; set; }
@@ -16,8 +16,14 @@ namespace Esport.Interface
         Statistic Stats { get; set; }
     }
 
-    public class ISelectedPlayer : IPlayers
+    public interface ISelectedPlayer : IPlayers
     {
         bool IsSelected { get; set; }
     }
+
+    public interface ITeam
+    {
+        string Name { get; set; }
+    }
+
 }

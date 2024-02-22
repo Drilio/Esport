@@ -7,8 +7,6 @@ namespace Esport.Front.View
         public Player()
         {
             InitializeComponent();
-            BindingContext = new PlayerViewModel();
         }
     }
-
 }

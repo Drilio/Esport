@@ -2,8 +2,12 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
 xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Esport.Front.View.Player">
+             x:Class="Esport.Front.View.Player"
+             xmlns:ViewModel="clr-namespace:Esport.Front.ViewModel">
 
+    <ContentPage.BindingContext>
+        <ViewModel:PlayerViewModel/>
+    </ContentPage.BindingContext>
     <ScrollView>
         <VerticalStackLayout
             Padding="30,0"
@@ -19,7 +23,7 @@ xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"
             <Label Text="Pseudo du joueur" />
             <telerik:RadEntry x:Name="userName" Text="{Binding Username}"/>
 
-            <Picker Title="Team" x:Name="_team" ItemsSource="{Binding TeamList}"/>
+            <Picker Title="Team" x:Name="_team" ItemsSource="{Binding Teams}"/>
             <telerik:RadButton x:Name="button" Text="Créer un joueur" Command="{Binding AddPlayerCommand}"/>
 
             <telerik:RadDataGrid x:Name="dataGrid" ItemsSource="{Binding Players}" AutoGenerateColumns="False">
@@ -27,13 +31,13 @@ xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"
                     <telerik:DataGridTemplateColumn>
                         <telerik:DataGridTemplateColumn.CellContentTemplate>
                             <DataTemplate>
-                                <telerik:RadCheckBox IsChecked="{Binding IsSelected}" />
+                                <telerik:RadCheckBox IsChecked="False" />
                             </DataTemplate>
                         </telerik:DataGridTemplateColumn.CellContentTemplate>
                     </telerik:DataGridTemplateColumn>
                     <telerik:DataGridTextColumn HeaderText="Pseudo" DataMemberBinding="{Binding Username}" />
                     <telerik:DataGridTextColumn HeaderText="Nom" DataMemberBinding="{Binding Name}" />
-                    <telerik:DataGridTextColumn HeaderText="Équipe" DataMemberBinding="{Binding Team.Name}" />
+                    <telerik:DataGridTextColumn HeaderText="Équipe" DataMemberBinding="{Binding Teams}" />
                     <telerik:DataGridTemplateColumn>
                         <telerik:DataGridTemplateColumn.CellContentTemplate>
                             <DataTemplate>

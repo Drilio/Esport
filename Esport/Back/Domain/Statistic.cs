@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Esport.Front.Model
+namespace Esport.Back.Domain
 {
     public class Statistic
     {
-        public string Name { get; set; }
+        public string Name{ get; set; }
         public string Type { get; set; }
     }
 }

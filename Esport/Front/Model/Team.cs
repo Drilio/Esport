@@ -1,20 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Esport.Interface;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace Esport.Front.Model
 {
-    public class Team
+    public class Team : ITeam, INotifyPropertyChanged
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
+        public event PropertyChangedEventHandler? PropertyChanged;
+        private string _name;
 
-        public Team(int id, string name)
+        public string Name
         {
-            Id = id;
-            Name = name;
+            get => _name;
+            set
+            {
+                if (_name != value)
+                {
+                    _name = value;
+                    OnPropertyChanged();
+                }
+            }
         }
+        public Team(string name)
+        {
+            this._name = name;
+        }
+        public void OnPropertyChanged([CallerMemberName] string name = "") =>
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
     }
 }
+

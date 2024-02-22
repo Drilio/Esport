@@ -1,4 +1,4 @@
-﻿using Esport.Back.Persistence;
+﻿using Esport.Back.Persistence.CRUD;
 using Esport.Front.Model;
 using System;
 using System.Collections.Generic;
@@ -7,11 +7,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Telerik.Maui;
 
-namespace Esport.Back.Services
+namespace Esport.Back.Service.Players
 {
     public class SPlayer
     {
-        public PPlayer Players { get; set; }
+        public PPlayer Players { get; set; } = new PPlayer();
 
         public void AddPlayer(string name, string username, Team team)
         {
@@ -27,6 +27,11 @@ namespace Esport.Back.Services
         public void DeletePlayer(int id)
         {
             Players.RemovePlayer(id);
+        }
+
+        public List<Player> GetPlayer()
+        {
+            return Players.GetAllPlayer();
         }
     }
 }
