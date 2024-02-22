@@ -16,7 +16,7 @@ namespace Esport.Back.Domain
 
         public List<StatByEntities> Statistics { get; set; }
 
-        public List<Party> Parties { get; set; }
+        public List<EGame> Parties { get; set; }
 
         public List<Statistic> Results { get; set; }
 

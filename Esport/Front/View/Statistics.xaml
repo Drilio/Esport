@@ -55,7 +55,7 @@
                         Grid.Row="2"
                         Grid.Column="1"
                         ItemDisplayBinding="{Binding Title}"
-                        ItemsSource="{Binding PickerGame}">
+                        ItemsSource="{Binding PickerVideoGame}">
                     </Picker>
                     <Label 
                         Grid.Row="3"
@@ -68,6 +68,15 @@
                         Grid.Column="1"
                         />
                     <Picker Grid.Row="4" Grid.Column="1" ItemsSource="{Binding PickerWinLoose}" />
+                    <telerik:RadButton Text="Créer une partie" 
+                    Grid.Row="4"
+                    Grid.Column="1"
+                    x:Name="buttonCreateGame"
+                    BorderThickness="2" 
+                    BorderColor="#4488F6" 
+                    AutomationId="button"
+                    Command="{Binding CreateGame}"
+                    />
                 </Grid>
             </telerik:TabViewItem>
         </telerik:RadTabView>

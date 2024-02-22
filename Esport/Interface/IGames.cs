@@ -4,13 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Esport.Back.Domain
+namespace Esport.Interface
 {
-    public class EGame
+    internal class IGames
     {
         public int Id { get; set; }
         public int IdVideoGame { get; set; }
-
         public List<int> PlayersId { get; set; }
 
         public List<int> TeamsId { get; set; }
@@ -18,6 +17,5 @@ namespace Esport.Back.Domain
         public int WinnerTeamId { get; set; }
 
         public DateTime Date { get; set; }
-
     }
 }

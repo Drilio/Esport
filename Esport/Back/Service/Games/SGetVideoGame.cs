@@ -9,19 +9,19 @@ using Esport.Interface;
 
 namespace Esport.Back.Service.Games
 {
-    public class SGetGame
+    public class SGetVideoGame
     {
         //Initialisation de la list De Titre de jeux qui va être servis à l'appelle de la fonction GetAllGame
-        public List<ITitleGame> TitleGameList { get; set; } = new List<ITitleGame>();
+        private List<ITitleVideoGame> TitleVideoGameList { get; set; } = new List<ITitleVideoGame>();
 
         //Implementation de la classe Game depuis le CRUD persistence
-        private PGame _pgame= new PGame();
+        private PVideoGame _pVideoGame= new PVideoGame();
 
         //Cette fonction retourne la liste de tous les titres de jeux présents dans la BDD
-        public List<ITitleGame> GetAllTitleGame()
+        public List<ITitleVideoGame> GetAllTitleVideoGame()
         {
             //Iteration sur la collection de TitleGmae pour les ajouter à la liste
-            return _pgame.GetAllGames().Select(G => new TitleGame(G.Title) as ITitleGame).ToList();  
+            return _pVideoGame.GetAllVideoGames().Select(G => new TitleVideoGame(G.Title) as ITitleVideoGame).ToList();  
         }
     }
 }
