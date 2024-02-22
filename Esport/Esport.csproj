@@ -57,21 +57,27 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <AndroidResource Remove="Back\Data\**" />
 	  <AndroidResource Remove="Front\Model\**" />
 	  <AndroidResource Remove="Front\ViewModel\**" />
 	  <AndroidResource Remove="Interface\**" />
+	  <Compile Remove="Back\Data\**" />
 	  <Compile Remove="Front\Model\**" />
 	  <Compile Remove="Front\ViewModel\**" />
 	  <Compile Remove="Interface\**" />
+	  <EmbeddedResource Remove="Back\Data\**" />
 	  <EmbeddedResource Remove="Front\Model\**" />
 	  <EmbeddedResource Remove="Front\ViewModel\**" />
 	  <EmbeddedResource Remove="Interface\**" />
+	  <MauiCss Remove="Back\Data\**" />
 	  <MauiCss Remove="Front\Model\**" />
 	  <MauiCss Remove="Front\ViewModel\**" />
 	  <MauiCss Remove="Interface\**" />
+	  <MauiXaml Remove="Back\Data\**" />
 	  <MauiXaml Remove="Front\Model\**" />
 	  <MauiXaml Remove="Front\ViewModel\**" />
 	  <MauiXaml Remove="Interface\**" />
+	  <None Remove="Back\Data\**" />
 	  <None Remove="Front\Model\**" />
 	  <None Remove="Front\ViewModel\**" />
 	  <None Remove="Interface\**" />
@@ -85,8 +91,28 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Back\Data\" />
 	  <Folder Include="Back\Service\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Front\View\Statistics.xaml.cs">
+	    <DependentUpon>Statistics.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Front\View\Players.xaml.cs">
+	    <DependentUpon>Players.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Front\View\Teams.xaml.cs">
+	    <DependentUpon>Teams.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Front\View\Statistics.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Front\View\Teams.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 </Project>

@@ -1,10 +1,10 @@
 ﻿namespace Esport.Front.View
 {
-    public partial class MainPage : ContentPage
+    public partial class Players : ContentPage
     {
         int count = 0;
 
-        public MainPage()
+        public Players()
         {
             InitializeComponent();
         }
