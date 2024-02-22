@@ -84,6 +84,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Include="Front\ViewModel\Statistics.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
@@ -91,7 +95,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Back\Service\" />
+	  <Folder Include="Back\Service\NewFolder\" />
 	</ItemGroup>
 
 	<ItemGroup>
