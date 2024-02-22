@@ -60,27 +60,21 @@
 	  <AndroidResource Remove="Back\Data\**" />
 	  <AndroidResource Remove="Front\Model\**" />
 	  <AndroidResource Remove="Front\ViewModel\**" />
-	  <AndroidResource Remove="Interface\**" />
 	  <Compile Remove="Back\Data\**" />
 	  <Compile Remove="Front\Model\**" />
 	  <Compile Remove="Front\ViewModel\**" />
-	  <Compile Remove="Interface\**" />
 	  <EmbeddedResource Remove="Back\Data\**" />
 	  <EmbeddedResource Remove="Front\Model\**" />
 	  <EmbeddedResource Remove="Front\ViewModel\**" />
-	  <EmbeddedResource Remove="Interface\**" />
 	  <MauiCss Remove="Back\Data\**" />
 	  <MauiCss Remove="Front\Model\**" />
 	  <MauiCss Remove="Front\ViewModel\**" />
-	  <MauiCss Remove="Interface\**" />
 	  <MauiXaml Remove="Back\Data\**" />
 	  <MauiXaml Remove="Front\Model\**" />
 	  <MauiXaml Remove="Front\ViewModel\**" />
-	  <MauiXaml Remove="Interface\**" />
 	  <None Remove="Back\Data\**" />
 	  <None Remove="Front\Model\**" />
 	  <None Remove="Front\ViewModel\**" />
-	  <None Remove="Interface\**" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -92,10 +86,6 @@
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
 		<PackageReference Include="Telerik.UI.for.Maui.Trial" Version="6.7.0" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Back\Service\NewFolder\" />
 	</ItemGroup>
 
 	<ItemGroup>
