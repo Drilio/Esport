@@ -9,6 +9,7 @@ namespace Esport
         {
             var builder = MauiApp.CreateBuilder();
             builder
+                .UseTelerik()
                 .UseMauiApp<App>()
                 .UseTelerik()
                 .ConfigureFonts(fonts =>

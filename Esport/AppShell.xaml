@@ -7,8 +7,18 @@
     Shell.FlyoutBehavior="Disabled"
     Title="Esport">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:Player}"
-        Route="MainPage" />
+    <FlyoutItem Title="Esport" Route="Esport">
+        <Tab Title="Players" Route="player">
+            <ShellContent Route="playerContent" 
+                          ContentTemplate="{DataTemplate local:Players}" />
+        </Tab>
+        <Tab Title="Teams" Route="team">
+            <ShellContent Route="teamContent" 
+                          ContentTemplate="{DataTemplate local:Teams}" />
+        </Tab>
+        <Tab Title="Stats" Route="statistics">
+            <ShellContent Route="statContent" 
+                          ContentTemplate="{DataTemplate local:Statistics}" />
+        </Tab>
+    </FlyoutItem>
 </Shell>

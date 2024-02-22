@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"
+             xmlns:ViewModel="clr-namespace:Esport.Front.ViewModel"
+             x:Class="Esport.Front.View.Statistics"            
+             Title="Statistics">
+    <ContentPage.BindingContext>
+        <ViewModel:StatisticsViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <LayoutOptions x:Key="horzOptions"
+                       Alignment="Center"/>
+        <LayoutOptions x:Key="vertOptions"
+                       Alignment="Center"/>
+    </ContentPage.Resources>
+    <VerticalStackLayout>
+        <telerik:RadTabView x:Name="tabView" AutomationId="tabView">
+            <telerik:TabViewItem HeaderText="Parties de JeuVideal">
+                <Label Margin="10" Text="This is the content of the View Parties de JeuVideal" />
+            </telerik:TabViewItem>
+            <telerik:TabViewItem HeaderText="CreationDePartie">
+                <Grid  Margin="20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="300"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Label 
+                        HorizontalOptions="{StaticResource horzOptions}"  
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2">
+                        CREATION DE PARTIE DE JEU VIDEAL</Label>
+                    <Label Grid.Row="1"
+                           Grid.Column="0"
+                           VerticalOptions="{StaticResource vertOptions}">Selectionner une date et une heure :</Label>
+                    <telerik:RadDateTimePicker 
+                        x:Name="dateTimePicker" 
+                        Grid.Row="1"
+                        Grid.Column="1"/>
+                    <Label 
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        VerticalOptions="{StaticResource vertOptions}">A quel jeu t'as joué gros BATARD:</Label>
+                    <Picker 
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        ItemDisplayBinding="{Binding Title}"
+                        ItemsSource="{Binding PickerGame}">
+                    </Picker>
+                    <Label 
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        VerticalOptions="{StaticResource vertOptions}">C'est quoi ton Blaze ?</Label>
+                    <Entry 
+                        x:Name="PlayerName"
+                        Placeholder="AlyPGMdu38"
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        />
+                    <Picker Grid.Row="4" Grid.Column="1" ItemsSource="{Binding PickerWinLoose}" />
+                </Grid>
+            </telerik:TabViewItem>
+        </telerik:RadTabView>
+    </VerticalStackLayout>
+</ContentPage>
