@@ -64,10 +64,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Back\" />
-	  <Folder Include="Front\ViewModel\" />
-	  <Folder Include="Front\ViewModel\" />
-	  <Folder Include="Interface\" />
+	  <Compile Update="Front\View\Players.xaml.cs">
+	    <DependentUpon>Players.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Back\Domain\" />
 	</ItemGroup>
 
 </Project>

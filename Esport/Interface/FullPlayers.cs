@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Esport.Back.Domain
+namespace Esport.Interface
 {
-    class Class1
+    internal class PlayerInterface
     {
     }
 }

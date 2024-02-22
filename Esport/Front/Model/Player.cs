@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Esport.Interface;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,26 +7,22 @@ using System.Threading.Tasks;
 
 namespace Esport.Front.Model
 {
-    public class Player
+    public class Player : ISelectedPlayer
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public string Username { get; set; }
-        public string Team { get; set; }
-        public List<Player> Players { get; set; } = new List<Player>();
+        public Team Team { get; set; }
         public Statistic Stats { get; set; }
 
-        public Player(string name,string username,string team)
+        public Player(string name,string username,Team team)
         {
+            DateTime date=new DateTime();
+            Id=(int)date.Millisecond;
             Name= name;
             Username= username;
             Team = team;
             Stats = new Statistic();
-        }
-
-        public void AddPlayer(Player player) 
-        { 
-            Players.Add(player);
         }
     }
 }
