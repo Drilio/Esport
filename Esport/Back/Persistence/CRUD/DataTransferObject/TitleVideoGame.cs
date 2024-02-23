@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace Esport.Back.Persistence.CRUD.DataTransferObject
 {
-    public class TitleGame : ITitleGame
+    public class TitleVideoGame : ITitleVideoGame
     {
         public string Title { get; set; }
-        public TitleGame(string Title)
+        public TitleVideoGame(string Title)
         {
             this.Title = Title;
         }

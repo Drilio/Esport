@@ -13,13 +13,12 @@ namespace Esport.Back.Domain
         public string Nickname { get; set; }
         public ETeam Team{ get; set; }
         public List<StatByEntities> Statistics { get; set; }
-        public List<Party>  Parties { get; set; }
-
-        public EPlayer(string name,string nickname,ETeam team)
+        public EPlayer(string name, string nickname, ETeam team)
         {
             Name = name;
             Nickname = nickname;
             Team = team;
         }
+        public List<EGame>  Parties { get; set; }
     }
 }

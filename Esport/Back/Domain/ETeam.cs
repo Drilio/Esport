@@ -12,18 +12,16 @@ namespace Esport.Back.Domain
 
         public string Name { get; set; }
 
+        public List<int> PlayersId{ get; set; }
         public List<EPlayer> Players { get; set; }
 
-        public List<StatByEntities> Statistics { get; set; }
-
-        public List<Party> Parties { get; set; }
-
-        public List<Statistic> Results { get; set; }
-
-        public ETeam(int Id, string Name)
-        {
-            this.Id = Id;
-            this.Name = Name;
+        public List<int> GameId { get; set; }
+        //constructor
+        public ETeam(int id, string name, List<int> PlayersId,List<int> GamesId) { 
+        this.Id = id;
+        this.Name = name;
+        this.PlayersId = PlayersId;
+        this.GameId = GamesId;
         }
     }
 }

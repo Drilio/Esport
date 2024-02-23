@@ -17,7 +17,8 @@
     <VerticalStackLayout>
         <telerik:RadTabView x:Name="tabView" AutomationId="tabView">
             <telerik:TabViewItem HeaderText="Parties de JeuVideal">
-                <Label Margin="10" Text="This is the content of the View Parties de JeuVideal" />
+                <telerik:RadDataGrid x:Name="dataGrid"
+                                     ItemsSource=""/>
             </telerik:TabViewItem>
             <telerik:TabViewItem HeaderText="CreationDePartie">
                 <Grid  Margin="20">
@@ -46,28 +47,50 @@
                     <telerik:RadDateTimePicker 
                         x:Name="dateTimePicker" 
                         Grid.Row="1"
-                        Grid.Column="1"/>
+                        Grid.Column="1"
+                        Date="{Binding GameToCreate.Date}"/>
                     <Label 
                         Grid.Row="2"
                         Grid.Column="0"
-                        VerticalOptions="{StaticResource vertOptions}">A quel jeu t'as joué gros BATARD:</Label>
+                        VerticalOptions="{StaticResource vertOptions}"
+                        >A quel jeu t'as joué gros BATARD:</Label>
                     <Picker 
                         Grid.Row="2"
                         Grid.Column="1"
                         ItemDisplayBinding="{Binding Title}"
-                        ItemsSource="{Binding PickerGame}">
+                        SelectedIndex="{Binding GameToCreate.IdVideoGame}"
+                        ItemsSource="{Binding PickerVideoGame}">
                     </Picker>
-                    <Label 
+                    <Label
                         Grid.Row="3"
+                        Grid.Column="0"
+                        VerticalOptions="{StaticResource vertOptions}">Team : </Label>
+                    <Picker
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        ItemsSource="{Binding AllTeamsNames}"
+                        ></Picker>
+                    <Label 
+                        Grid.Row="4"
                         Grid.Column="0"
                         VerticalOptions="{StaticResource vertOptions}">C'est quoi ton Blaze ?</Label>
                     <Entry 
                         x:Name="PlayerName"
                         Placeholder="AlyPGMdu38"
-                        Grid.Row="3"
+                        Grid.Row="4"
                         Grid.Column="1"
+                        Text="{Binding GameToCreate.PlayersId}"
                         />
                     <Picker Grid.Row="4" Grid.Column="1" ItemsSource="{Binding PickerWinLoose}" />
+                    <telerik:RadButton Text="Créer une partie" 
+                    Grid.Row="4"
+                    Grid.Column="1"
+                    x:Name="buttonCreateGame"
+                    BorderThickness="2" 
+                    BorderColor="#4488F6" 
+                    AutomationId="button"
+                    Command="{Binding CreateGame}"
+                    />
                 </Grid>
             </telerik:TabViewItem>
         </telerik:RadTabView>
