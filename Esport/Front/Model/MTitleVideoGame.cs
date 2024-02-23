@@ -9,12 +9,12 @@ using System.Runtime.CompilerServices;
 
 namespace Esport.Front.Model
 {
-    public class MTitleGame: INotifyPropertyChanged, ITitleGame
+    public class MTitleVideoGame: INotifyPropertyChanged, ITitleVideoGame
     {
 
         private string _title;
 
-        public MTitleGame (ITitleGame myTitle)
+        public MTitleVideoGame (ITitleVideoGame myTitle)
         {
             this._title = myTitle.Title;
         }
@@ -27,10 +27,6 @@ namespace Esport.Front.Model
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
-        public MTitleGame()
-        {
-
-        }
     public void OnPropertyChanged([CallerMemberName] string name = "") =>
     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
     }

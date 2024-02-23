@@ -4,20 +4,40 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 namespace Esport.Back.Domain
 {
-    internal class EGame
+    public class EGame
     {
         public int Id { get; set; }
-        public string Description { get; set; }
-        public string Title { get; set; }
-        public string Category { get; set; }
+        public int IdVideoGame { get; set; }
 
-        public EGame(int Id, string Description, string Title, string Category) {
-            this.Id = Id;
-            this.Description = Description;
-            this.Title = Title;
-            this.Category = Category;
+        public List<int> PlayersId { get; set; }
+
+        public List<int> TeamsId { get; set; }
+
+        public int WinnerTeamId { get; set; }
+
+        public DateTime Date { get; set; }
+        //Constructeur
+        public EGame(int id, int IdVideoGame, List<int> PlayersId, List<int>TeamsId, int WinnerTeamId, DateTime Date) { 
+            this.Id = id;
+            this.IdVideoGame = IdVideoGame;
+            this.PlayersId = PlayersId;
+            this.TeamsId = TeamsId;
+            this.WinnerTeamId = WinnerTeamId;
+            this.Date = Date;
+        }
+
+        //Constructeur avec interface
+        public EGame(IGame InterfaceGame) { 
+        
+            this.Id = InterfaceGame.Id;
+            this.IdVideoGame = InterfaceGame.IdVideoGame;
+            this.PlayersId = InterfaceGame.PlayersId;
+            this.TeamsId = InterfaceGame.TeamsId;
+            this.WinnerTeamId = InterfaceGame.WinnerTeamId;
+            this.Date = Date;
         }
 
     }

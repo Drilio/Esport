@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Esport.Interface
 {
-    public interface IGame
+    public interface IVideoGame
     {
         string Id { get; set; }
         string Category { get; set; }
@@ -14,7 +14,7 @@ namespace Esport.Interface
         string Description { get; set; }
     }
 
-    public interface ITitleGame
+    public interface ITitleVideoGame
     {
         string Title { get; set; }
     }
