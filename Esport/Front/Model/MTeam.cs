@@ -4,9 +4,18 @@ using System.Runtime.CompilerServices;
 
 namespace Esport.Front.Model
 {
-    public class Team : ITeam, INotifyPropertyChanged
+    public class MTeam : ITeam, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
+
+        private int _id;
+
+        public int id
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
+
         private string _name;
 
         public string Name
@@ -21,9 +30,9 @@ namespace Esport.Front.Model
                 }
             }
         }
-        public Team(string name)
+        public MTeam(ITeam team)
         {
-            this._name = name;
+            this._name = team.Name;
         }
         public void OnPropertyChanged([CallerMemberName] string name = "") =>
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));

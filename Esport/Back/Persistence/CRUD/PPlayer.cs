@@ -1,4 +1,4 @@
-﻿using Esport.Front.Model;
+﻿using Esport.Back.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,9 +13,12 @@ namespace Esport.Back.Persistence.CRUD
     {
         public List<Player> Players { get; set; } = new List<Player>()
         {
-            new Player("jojo", "bobo", new Team("SKT T1"))
+            new Player("jojo", "bobo", new Team(6,"SKT T1"))
         };
-        
+        public PPlayer()
+        {
+            LoadPlayersAsync().Wait();
+        }
         public void AddPlayer(Player player)
         {
             Players.Add(player);
@@ -26,10 +29,10 @@ namespace Esport.Back.Persistence.CRUD
         {
             foreach (var item in Players)
             {
-                if (item.Id == id)
+                if (item.ID == id)
                 {
                     item.Name = name;
-                    item.Username = username;
+                    item.Nickname = username;
                     item.Team = team;
                 }
             }
@@ -39,7 +42,7 @@ namespace Esport.Back.Persistence.CRUD
         {
             foreach (var item in Players)
             {
-                if (item.Id == id)
+                if (item.ID == id)
                 {
                     Players.Remove(item);
                 }

@@ -1,9 +1,5 @@
-﻿using Esport.Front.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Esport.Back.Persistence.CRUD.DataTransferObject;
+using Esport.Front.Model;
 
 namespace Esport.Interface
 {
@@ -12,8 +8,7 @@ namespace Esport.Interface
         int Id { get; set; }
         string Name { get; set; }
         string Username { get; set; }
-        Team Team { get; set; }
-        Statistic Stats { get; set; }
+        TeamName Team { get; set; }
     }
 
     public interface ISelectedPlayer : IPlayers
@@ -24,6 +19,7 @@ namespace Esport.Interface
     public interface ITeam
     {
         string Name { get; set; }
+        int id { get; set; }
     }
 
 }

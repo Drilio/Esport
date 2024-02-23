@@ -1,11 +1,8 @@
 ﻿using Esport.Back.Persistence.CRUD;
+using Esport.Back.Domain;
+using Esport.Interface;
+using Esport.Back.Persistence.CRUD.DataTransferObject;
 using Esport.Front.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Telerik.Maui;
 
 namespace Esport.Back.Service.Players
 {
@@ -13,15 +10,15 @@ namespace Esport.Back.Service.Players
     {
         public PPlayer Players { get; set; } = new PPlayer();
 
-        public void AddPlayer(string name, string username, Team team)
+        public void AddPlayer(string name, string username, ITeam team)
         {
-            Player newPlayer = new Player(name, username, team);
+            Player newPlayer = new Player(name, username, new Team(team.id, team.Name));
             Players.AddPlayer(newPlayer);
         }
 
-        public void ModifyPlayer(int id, string name, string username, Team team)
+        public void ModifyPlayer(int id, string name, string username, ITeam team)
         {
-            Players.ModifyPlayer(id, name, username, team);
+            Players.ModifyPlayer(id, name, username, new Team(team.id,team.Name));
         }
 
         public void DeletePlayer(int id)
@@ -29,9 +26,9 @@ namespace Esport.Back.Service.Players
             Players.RemovePlayer(id);
         }
 
-        public List<Player> GetPlayer()
+        public List<IPlayers> GetPlayer()
         {
-            return Players.GetAllPlayer();
+            return Players.GetAllPlayer().Select(P => new DTOPlayer(P.Name, P.Nickname, new TeamName(P.Team.Id, P.Team.Name)) as IPlayers).ToList();
         }
     }
 }

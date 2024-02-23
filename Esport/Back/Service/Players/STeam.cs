@@ -12,7 +12,7 @@ namespace Esport.Back.Service.Players
 
         public List<ITeam> GetTeams()
         {
-            return _team.GetAllTeams().Select(T => new TeamName(T.Name) as ITeam).ToList();
+            return _team.GetAllTeams().Select(T => new TeamName(T.Id,T.Name) as ITeam).ToList();
         }
     }
 }

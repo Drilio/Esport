@@ -23,7 +23,7 @@ xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"
             <Label Text="Pseudo du joueur" />
             <telerik:RadEntry x:Name="userName" Text="{Binding Username}"/>
 
-            <Picker Title="Team" x:Name="_team" ItemsSource="{Binding Teams}"/>
+            <Picker Title="Team" x:Name="_team" ItemsSource="{Binding Teams}" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding SelectedTeam}"/>
             <telerik:RadButton x:Name="button" Text="Créer un joueur" Command="{Binding AddPlayerCommand}"/>
 
             <telerik:RadDataGrid x:Name="dataGrid" ItemsSource="{Binding Players}" AutoGenerateColumns="False">
@@ -37,12 +37,12 @@ xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"
                     </telerik:DataGridTemplateColumn>
                     <telerik:DataGridTextColumn HeaderText="Pseudo" DataMemberBinding="{Binding Username}" />
                     <telerik:DataGridTextColumn HeaderText="Nom" DataMemberBinding="{Binding Name}" />
-                    <telerik:DataGridTextColumn HeaderText="Équipe" DataMemberBinding="{Binding Teams}" />
+                    <telerik:DataGridTextColumn HeaderText="Équipe" DataMemberBinding="{Binding Teams}"  />
                     <telerik:DataGridTemplateColumn>
                         <telerik:DataGridTemplateColumn.CellContentTemplate>
                             <DataTemplate>
-                                <telerik:RadButton Text="Modifier" Command="{Binding Path=BindingContext.ModifyPlayerCommand, Source={x:Reference dataGrid}}" 
-                                        CommandParameter="{Binding}" VerticalOptions="Center" HorizontalOptions="Center" />
+                                <telerik:RadButton Text="Modifier" Command="{Binding ModifyPlayerCommand, Source={x:Reference dataGrid}}" 
+                                        VerticalOptions="Center" HorizontalOptions="Center" />
                             </DataTemplate>
                         </telerik:DataGridTemplateColumn.CellContentTemplate>
                     </telerik:DataGridTemplateColumn>

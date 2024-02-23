@@ -1,5 +1,6 @@
 ﻿using Esport.Back.Service.Players;
 using Esport.Front.Model;
+using Esport.Interface;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -10,11 +11,11 @@ namespace Esport.Front.ViewModel
     public class PlayerViewModel:INotifyPropertyChanged
     {
         private readonly SPlayer servicePlayer;
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
         private readonly STeam serviceTeam;
 
-        private Player _selectedPlayer;
-        public Player SelectedPlayer
+        private MPlayer _selectedPlayer;
+        public MPlayer SelectedPlayer
         {
             get => _selectedPlayer;
             set
@@ -26,8 +27,8 @@ namespace Esport.Front.ViewModel
                 }
             }
         }
-        private Team _selectedTeam;
-        public Team SelectedTeam
+        private MTeam _selectedTeam;
+        public MTeam SelectedTeam
         {
             get => _selectedTeam;
             set
@@ -39,10 +40,25 @@ namespace Esport.Front.ViewModel
                 }
             }
         }
-        public ObservableCollection<Player> Players { get; private set; }
-        public ObservableCollection<Team> Teams { get; private set; }
-        public string Name { get; set; }
-        public string Username { get; set; }
+        public ObservableCollection<MPlayer> Players { get; private set; }
+        public ObservableCollection<MTeam> Teams { get; private set; }
+        private string _name;
+
+        public string Name
+        {
+            get { return _name; }
+            set { _name = value; }
+        }
+
+        private string _username;
+
+        public string Username
+        {
+            get { return _username; }
+            set { _username = value; }
+        }
+
+
         public ICommand AddPlayerCommand { get; }
         public ICommand ModifyPlayerCommand { get; }
         public ICommand DeletePlayerCommand { get; }
@@ -55,7 +71,7 @@ namespace Esport.Front.ViewModel
                 if (_isSelected != value)
                 {
                     _isSelected = value;
-                    OnPropertyChanged();
+                    OnPropertyChanged(nameof(IsSelected));
                 }
             }
         }
@@ -64,12 +80,11 @@ namespace Esport.Front.ViewModel
         {
             servicePlayer = new SPlayer();
             serviceTeam = new STeam();
-            Players = new ObservableCollection<Player>(servicePlayer.GetPlayer());
-            Teams = new ObservableCollection<Team>();
-            var allTeams = serviceTeam.GetTeams();
-            foreach (var team in allTeams)
+            Players = new ObservableCollection<MPlayer>(servicePlayer.GetPlayer().Select(x=> new MPlayer(x)));
+            Teams = new ObservableCollection<MTeam>();
+            foreach (var team in serviceTeam.GetTeams())
             {
-                Teams.Add(new Team(team.Name));
+                Teams.Add(new MTeam(team));
             }
             AddPlayerCommand = new Command(AddPlayer);
             ModifyPlayerCommand = new Command(ModifyPlayer);
@@ -80,8 +95,8 @@ namespace Esport.Front.ViewModel
         {
             if (SelectedTeam != null)
             {
-                servicePlayer.AddPlayer(Name, Username, SelectedTeam);
-                Players.Add(new Player(Name, Username, SelectedTeam));
+                servicePlayer.AddPlayer(Name=_name, Username=_username, SelectedTeam=_selectedTeam);
+                Players.Add(new MPlayer(Name, Username, SelectedTeam));
                 ClearFields();
             }
         }
@@ -93,14 +108,21 @@ namespace Esport.Front.ViewModel
                 servicePlayer.ModifyPlayer(SelectedPlayer.Id, Name, Username, SelectedTeam);
                 SelectedPlayer.Name = Name;
                 SelectedPlayer.Username = Username;
-                SelectedPlayer.Team = SelectedTeam;
+                SelectedPlayer.Team = new Back.Persistence.CRUD.DataTransferObject.TeamName( SelectedTeam);
             }
         }
 
         public void DeletePlayer()
         {
-            servicePlayer.DeletePlayer(SelectedPlayer.Id);
-            Players.Remove(SelectedPlayer);
+            
+                if (IsSelected)
+                {
+                    Players.Remove(SelectedPlayer);
+                    servicePlayer.DeletePlayer(SelectedPlayer.Id);
+                }
+            
+
+            
             SelectedPlayer = null;
         }
 
