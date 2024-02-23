@@ -17,7 +17,8 @@
     <VerticalStackLayout>
         <telerik:RadTabView x:Name="tabView" AutomationId="tabView">
             <telerik:TabViewItem HeaderText="Parties de JeuVideal">
-                <Label Margin="10" Text="This is the content of the View Parties de JeuVideal" />
+                <telerik:RadDataGrid x:Name="dataGrid"
+                                     ItemsSource=""/>
             </telerik:TabViewItem>
             <telerik:TabViewItem HeaderText="CreationDePartie">
                 <Grid  Margin="20">

@@ -13,9 +13,12 @@ namespace Esport.Back.Service.Games
     {
         private PGames _pGames = new PGames();
 
-        public List<IGame> GetallGame()
+        public List<IGame> GetAllGames()
         {
-            return _pGames.LoadGamesAsync().Result.Select(G => G as IGame).ToList();
+            return _pGames.LoadGamesAsync()
+                .Result
+                .Select(G => G as IGame)
+                .ToList();
         }
     }
 }

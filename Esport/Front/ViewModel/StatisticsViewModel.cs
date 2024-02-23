@@ -22,22 +22,33 @@ namespace Esport.Front.ViewModel
 
         private SGetVideoGame _getVideoGame = new SGetVideoGame();
 
-        private SCreateGame _CreateGame = new SCreateGame();
+        private SCreateGame _createGame = new SCreateGame();
+
+        private SGetAllGames _getAllGames = new SGetAllGames();
         public MGame GameToCreate { get; set; }
+        public List<MGame> ListOfAllGames { get; set; }
 
         private ObservableCollection<MGame> ObservableGame { get; set;}
         //Permet de créer un jeu
         public void AddGame()
         {
             ObservableGame.Add(GameToCreate);
-            _CreateGame.SaveGame(GameToCreate);
+            _createGame.SaveGame(GameToCreate);
         }
 
-        //Permet de récupérer les "videosGames" existant
+        //Permet de récupérer les données necessaire à la Vew 
         internal void LoadData()
         {
-            var toto = _getVideoGame.GetAllTitleVideoGame();
+            //Récupération de tous les jeux vidéo disponibles
+            //TODO:THIS FIRST LINE MAY BE USELESS
+            var AllVideoGame = _getVideoGame.GetAllTitleVideoGame();
             this.PickerVideoGame = _getVideoGame.GetAllTitleVideoGame().Select(T => new MTitleVideoGame(T)).ToList();
+            //Récupération de toutes les parties de jeux sauvegardé
+            //TODO:THIS FIRST LINE MAY BE 
+            var AllGames = _getAllGames.GetAllGames();
+            this.ListOfAllGames = _getAllGames.GetAllGames()
+                .Select(g => new MGame(g))
+                .ToList();
         }
 
         //Constructeur Statistics
