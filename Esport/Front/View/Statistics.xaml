@@ -18,7 +18,7 @@
         <telerik:RadTabView x:Name="tabView" AutomationId="tabView">
             <telerik:TabViewItem HeaderText="Parties de JeuVideal">
                 <telerik:RadDataGrid x:Name="dataGrid"
-                                     ItemsSource=""/>
+                                     ItemsSource="{Binding ListOfAllGames}"/>
             </telerik:TabViewItem>
             <telerik:TabViewItem HeaderText="CreationDePartie">
                 <Grid  Margin="20">
