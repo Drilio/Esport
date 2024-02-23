@@ -10,7 +10,7 @@ namespace Esport.Front.Model
 
         private int _id;
 
-        public int id
+        public int Id
         {
             get { return _id; }
             set { _id = value; }
@@ -33,6 +33,7 @@ namespace Esport.Front.Model
         public MTeam(ITeam team)
         {
             this._name = team.Name;
+            this._id = team.Id;
         }
         public void OnPropertyChanged([CallerMemberName] string name = "") =>
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));

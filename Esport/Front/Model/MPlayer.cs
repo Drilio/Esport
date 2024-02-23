@@ -1,4 +1,5 @@
 ﻿using Esport.Back.Persistence.CRUD.DataTransferObject;
+using Esport.Front.ViewModel;
 using Esport.Interface;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -9,6 +10,7 @@ namespace Esport.Front.Model
         public event PropertyChangedEventHandler? PropertyChanged;
 
         public int Id { get; set; }
+        public int TeamId { get; set; }
         public DTOTeam Team { get; set; }
         public Statistic Stats { get; set; }
         public string _userName;
@@ -49,9 +51,18 @@ namespace Esport.Front.Model
         public MPlayer(IPlayers players)
         {
             Id = players.Id;
-            Team = players.Team;
+            TeamId = players.TeamId;
             Name = players.Name;
             Username = players.Username;
+        }
+
+        public MPlayer(string name,string username, int teamId)
+        {
+            DateTime date = new DateTime();
+            this.Id = (int)date.Millisecond;
+            this.Name= name;
+            this.Username= username;
+            this.TeamId= teamId;
         }
         
         public void OnPropertyChanged([CallerMemberName] string name = "") =>

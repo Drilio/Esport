@@ -8,18 +8,13 @@ namespace Esport.Interface
         int Id { get; set; }
         string Name { get; set; }
         string Username { get; set; }
-        DTOTeam Team { get; set; }
-    }
-
-    public interface ISelectedPlayer : IPlayers
-    {
-        bool IsSelected { get; set; }
+        int TeamId { get; set; }
     }
 
     public interface ITeam
     {
         string Name { get; set; }
-        int id { get; set; }
+        int Id { get; set; }
     }
 
 }

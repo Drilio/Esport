@@ -16,39 +16,41 @@ xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"
                 Text="Formulaire de création de joueur"
                 Style="{StaticResource Headline}"
                 SemanticProperties.HeadingLevel="Level1" />
-            
             <Label Text="Nom du joueur" />
-            <telerik:RadEntry x:Name="playerName" Text="{Binding Name}"/>
+            <telerik:RadEntry Text="{Binding Name}"/>
             
             <Label Text="Pseudo du joueur" />
-            <telerik:RadEntry x:Name="userName" Text="{Binding Username}"/>
+            <telerik:RadEntry Text="{Binding Username}"/>
 
-            <Picker Title="Team" x:Name="_team" ItemsSource="{Binding Teams}" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding SelectedTeam}"/>
+            <Picker Title="Team" ItemsSource="{Binding Teams}" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding SelectedTeam}"/>
             <telerik:RadButton x:Name="button" Text="Créer un joueur" Command="{Binding AddPlayerCommand}"/>
 
-            <telerik:RadDataGrid x:Name="dataGrid" ItemsSource="{Binding Players}" AutoGenerateColumns="False">
+            <telerik:RadDataGrid x:Name="dataGrid" ItemsSource="{Binding Players}" AutoGenerateColumns="False" SelectedItem="{Binding SelectedPlayer}">
                 <telerik:RadDataGrid.Columns>
                     <telerik:DataGridTemplateColumn>
                         <telerik:DataGridTemplateColumn.CellContentTemplate>
                             <DataTemplate>
-                                <telerik:RadCheckBox IsChecked="False" />
+                                <telerik:RadCheckBox x:Name="checkboxIsChecked" IsThreeState="True" />
                             </DataTemplate>
                         </telerik:DataGridTemplateColumn.CellContentTemplate>
                     </telerik:DataGridTemplateColumn>
-                    <telerik:DataGridTextColumn HeaderText="Pseudo" DataMemberBinding="{Binding Username}" />
+                    <telerik:DataGridTextColumn HeaderText="Id" DataMemberBinding="{Binding Id}" />
+                    <telerik:DataGridTextColumn HeaderText="Pseudo" DataMemberBinding="{Binding Username}"/>
                     <telerik:DataGridTextColumn HeaderText="Nom" DataMemberBinding="{Binding Name}" />
                     <telerik:DataGridTextColumn HeaderText="Équipe" DataMemberBinding="{Binding Team.Name}"  />
                     <telerik:DataGridTemplateColumn>
                         <telerik:DataGridTemplateColumn.CellContentTemplate>
                             <DataTemplate>
-                                <telerik:RadButton Text="Modifier" Command="{Binding ModifyPlayerCommand, Source={x:Reference dataGrid}}" 
+                                <telerik:RadButton Text="Modifier" Command="{Binding ModifyPlayerCommand}" 
                                         VerticalOptions="Center" HorizontalOptions="Center" />
                             </DataTemplate>
                         </telerik:DataGridTemplateColumn.CellContentTemplate>
                     </telerik:DataGridTemplateColumn>
                 </telerik:RadDataGrid.Columns>
             </telerik:RadDataGrid>
-            <telerik:RadButton x:Name="Supprimer" Text="Supprimer" Command="{Binding DeletePlayerCommand}"/>
+            <Label Text="ID du joueur a supprimer" />
+            <telerik:RadEntry Text="{Binding Id}"/>
+            <telerik:RadButton Text="Supprimer" Command="{Binding DeletePlayerCommand}"/>
 
         </VerticalStackLayout>
     </ScrollView>

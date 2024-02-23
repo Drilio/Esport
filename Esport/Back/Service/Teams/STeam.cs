@@ -10,6 +10,10 @@ namespace Esport.Back.Service.Teams
 
         private PTeam _team = new PTeam();
 
+        public List<ITeam> GetTeamsById(int id)
+        {
+            return _team.GetAllTeams().Where(t => t.Id == id).Select(T => new DTOTeam(T.Id, T.Name) as ITeam).ToList();
+        }
         public List<ITeam> GetTeams()
         {
             return _team.GetAllTeams().Select(T => new DTOTeam(T.Id, T.Name) as ITeam).ToList();

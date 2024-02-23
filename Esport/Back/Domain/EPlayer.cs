@@ -8,15 +8,17 @@ namespace Esport.Back.Domain
 {
     public class EPlayer
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
-        public string Nickname { get; set; }
+        public string Username { get; set; }
         public ETeam Team{ get; set; }
         public List<StatByEntities> Statistics { get; set; }
         public EPlayer(string name, string nickname, ETeam team)
         {
+            DateTime date = new DateTime();
+            this.Id = (int)date.Millisecond;
             Name = name;
-            Nickname = nickname;
+            Username = nickname;
             Team = team;
         }
         public List<EGame>  Parties { get; set; }

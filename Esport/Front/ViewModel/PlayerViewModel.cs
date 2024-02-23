@@ -6,29 +6,20 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
+using System.Xml.Linq;
 using Telerik.Maui.Controls;
+using Telerik.Maui.Controls.Compatibility.DataGrid;
 
 namespace Esport.Front.ViewModel
 {
-    public class PlayerViewModel:INotifyPropertyChanged
+    public class PlayerViewModel: INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler? PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
         private readonly SPlayer servicePlayer;
         private readonly STeam serviceTeam;
+        // Déclaration des propriétées pour stocker le joueur
+        public MPlayer SelectedPlayer { get; set; }
 
-        private MPlayer _selectedPlayer;
-        public MPlayer SelectedPlayer
-        {
-            get => _selectedPlayer;
-            set
-            {
-                if (_selectedPlayer != value)
-                {
-                    _selectedPlayer = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
         private MTeam _selectedTeam;
         public MTeam SelectedTeam
         {
@@ -42,6 +33,15 @@ namespace Esport.Front.ViewModel
                 }
             }
         }
+        private int _id;
+
+        public int Id
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
+
+
         private string _name;
         public string Name
         {
@@ -60,58 +60,47 @@ namespace Esport.Front.ViewModel
                     OnPropertyChanged();
             }
         }
-        
 
-        private bool _isSelected;
-                public bool IsSelected
-                {
-                    get => _isSelected;
-                    set
-                    {
-                        if (_isSelected != value)
-                        {
-                            _isSelected = value;
-                            OnPropertyChanged(nameof(IsSelected));
-                        }
-                    }
-                }
         //Interface permettant de lier les boutons aux fonctions
         public ICommand AddPlayerCommand { get; }
         public ICommand ModifyPlayerCommand { get; }
         public ICommand DeletePlayerCommand { get; }
 
-        //
+        private RadDataGrid _dataGrid;
+
+        // Collection de toutes les équipes et Teams disponibles
         public ObservableCollection<MTeam> Teams { get; private set; }
         public ObservableCollection<MPlayer> Players { get; private set; }
         
 
         public PlayerViewModel()
         {
+            // Initialisation des services pour les joueurs et les équipes
             servicePlayer = new SPlayer();
             serviceTeam = new STeam();
-            
+
+            // Récupération de la liste des joueurs et des équipes
             Players = new ObservableCollection<MPlayer>(servicePlayer.GetPlayer().Select(x=> new MPlayer(x)));
-            Teams = new ObservableCollection<MTeam>();
-            foreach (var team in serviceTeam.GetTeams())
-            {
-                Teams.Add(new MTeam(team));
-            }
+            Teams = new ObservableCollection<MTeam>(serviceTeam.GetTeams().Select(x=> new MTeam(x)));
+            
+            // Initialisation des commandes pour les boutons
             AddPlayerCommand = new Command(AddPlayer);
             ModifyPlayerCommand = new Command(ModifyPlayer);
             DeletePlayerCommand = new Command(DeletePlayer);
         }
 
-        //Fonctions permettant l'ajout, la suppression et la modification d'un joueur
+        // Méthode pour ajouter un joueur
         public void AddPlayer()
         {
             if (SelectedTeam != null)
             {
-                servicePlayer.AddPlayer(Name=_name, Username=_username, SelectedTeam=_selectedTeam);
-                Players.Add(new MPlayer(Name, Username, SelectedTeam));
-                ClearFields();
+                MPlayer p = new MPlayer(Name, Username, SelectedTeam);
+                servicePlayer.AddPlayer(p.Id,p.Name,p.Username, p.Team);
+                Players.Add(p);
+                //ClearFields();
             }
         }
-
+        // Méthode pour modifier un joueur
         public void ModifyPlayer()
         {
             if (SelectedPlayer != null && SelectedTeam != null)
@@ -122,18 +111,16 @@ namespace Esport.Front.ViewModel
                 SelectedPlayer.Team = new Back.Persistence.CRUD.DataTransferObject.DTOTeam( SelectedTeam);
             }
         }
-
+        // Méthode pour supprimer un joueur
         public void DeletePlayer()
         {
-            if (IsSelected)
-            {
-                Players.Remove(SelectedPlayer);
-                servicePlayer.DeletePlayer(SelectedPlayer.Id);
+            foreach (var p in servicePlayer.GetPlayerById(Id)){
+                Players.Remove(new MPlayer(p));
+                servicePlayer.DeletePlayer(Id);
             }
-            SelectedPlayer = null;
         }
 
-        //Permet de remettre les champs vides
+        // Méthode pour effacer les champs du formulaire
         private void ClearFields()
         {
             Name = string.Empty;
@@ -141,6 +128,7 @@ namespace Esport.Front.ViewModel
             SelectedTeam = null;
         }
 
+        // Méthode pour notifier le changement de propriété
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

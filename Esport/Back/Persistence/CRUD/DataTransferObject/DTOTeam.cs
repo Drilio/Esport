@@ -5,22 +5,22 @@ namespace Esport.Back.Persistence.CRUD.DataTransferObject
 {
     public class DTOTeam :ITeam
     {
-        public int id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public DTOTeam( int id ,string name) 
         { 
-            this.id = id;
+            this.Id = id;
             this.Name = name; 
         }
         public DTOTeam(ITeam team )
         {
             this.Name = team.Name;
-            this.id = team.id;
+            this.Id = team.Id;
         }
 
         public DTOTeam( MTeam team) {
             this.Name = team.Name;
-            this.id = team.id;
+            this.Id = team.Id;
                 }
     }
 }

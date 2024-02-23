@@ -23,5 +23,10 @@ namespace Esport.Back.Domain
         this.PlayersId = PlayersId;
         this.GameId = GamesId;
         }
+        public ETeam(int id,string name) {
+            this.Id=id;
+            this.Name = name;
+        }
+
     }
 }
