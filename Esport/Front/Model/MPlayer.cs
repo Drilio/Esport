@@ -9,7 +9,7 @@ namespace Esport.Front.Model
         public event PropertyChangedEventHandler? PropertyChanged;
 
         public int Id { get; set; }
-        public TeamName Team { get; set; }
+        public DTOTeam Team { get; set; }
         public Statistic Stats { get; set; }
         public string _userName;
         public string Username
@@ -44,7 +44,7 @@ namespace Esport.Front.Model
             this.Id=(int)date.Millisecond;
             this.Name= name;
             this.Username= username;
-            this.Team = new TeamName(team);
+            this.Team = new DTOTeam(team);
         }
         public MPlayer(IPlayers players)
         {

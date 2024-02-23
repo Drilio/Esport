@@ -4,14 +4,14 @@ namespace Esport.Back.Persistence.CRUD
 {
     public class PTeam
     {
-        public List<Team> Teams { get; set; } = new List<Team>()
+        public List<ETeam> Teams { get; set; } = new List<ETeam>()
         {
-             new Team(1,"JU"),
-             new Team(2,"Vitality"),
-             new Team(3,"SKT T1")
+             new ETeam(1,"JU"),
+             new ETeam(2,"Vitality"),
+             new ETeam(3,"SKT T1")
         };
 
-        public List<Team> GetAllTeams()
+        public List<ETeam> GetAllTeams()
         {
             return Teams;
         }

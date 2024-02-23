@@ -11,21 +11,21 @@ namespace Esport.Back.Persistence.CRUD
 {
     public class PPlayer
     {
-        public List<Player> Players { get; set; } = new List<Player>()
+        public List<EPlayer> Players { get; set; } = new List<EPlayer>()
         {
-            new Player("jojo", "bobo", new Team(6,"SKT T1"))
+            new EPlayer("jojo", "bobo", new ETeam(6,"SKT T1"))
         };
         public PPlayer()
         {
             LoadPlayersAsync().Wait();
         }
-        public void AddPlayer(Player player)
+        public void AddPlayer(EPlayer player)
         {
             Players.Add(player);
 
             var t = SavePlayersAsync().Result;
         }
-        public void ModifyPlayer(int id, string name, string username, Team team)
+        public void ModifyPlayer(int id, string name, string username, ETeam team)
         {
             foreach (var item in Players)
             {
@@ -49,7 +49,7 @@ namespace Esport.Back.Persistence.CRUD
             }
         }
 
-        public List<Player> GetAllPlayer()
+        public List<EPlayer> GetAllPlayer()
         {
             return Players;
         }
@@ -59,7 +59,7 @@ namespace Esport.Back.Persistence.CRUD
         //Database
         public async Task LoadPlayersAsync()
         {
-            Players = await ObjectSerializer.DeserializeFromFile<List<Player>>(filePath) ?? new List<Player>();
+            Players = await ObjectSerializer.DeserializeFromFile<List<EPlayer>>(filePath) ?? new List<EPlayer>();
         }
         public async Task<bool> SavePlayersAsync()
         {

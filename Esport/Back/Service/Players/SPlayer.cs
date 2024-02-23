@@ -12,13 +12,13 @@ namespace Esport.Back.Service.Players
 
         public void AddPlayer(string name, string username, ITeam team)
         {
-            Player newPlayer = new Player(name, username, new Team(team.id, team.Name));
+            EPlayer newPlayer = new EPlayer(name, username, new ETeam(team.id, team.Name));
             Players.AddPlayer(newPlayer);
         }
 
         public void ModifyPlayer(int id, string name, string username, ITeam team)
         {
-            Players.ModifyPlayer(id, name, username, new Team(team.id,team.Name));
+            Players.ModifyPlayer(id, name, username, new ETeam(team.id,team.Name));
         }
 
         public void DeletePlayer(int id)
@@ -28,7 +28,7 @@ namespace Esport.Back.Service.Players
 
         public List<IPlayers> GetPlayer()
         {
-            return Players.GetAllPlayer().Select(P => new DTOPlayer(P.Name, P.Nickname, new TeamName(P.Team.Id, P.Team.Name)) as IPlayers).ToList();
+            return Players.GetAllPlayer().Select(P => new DTOPlayer(P.Name, P.Nickname, new DTOTeam(P.Team.Id, P.Team.Name)) as IPlayers).ToList();
         }
     }
 }

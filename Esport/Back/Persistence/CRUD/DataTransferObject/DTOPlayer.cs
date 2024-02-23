@@ -15,9 +15,9 @@ namespace Esport.Back.Persistence.CRUD.DataTransferObject
         public int Id { get; set; }
         public string Name { get; set; }
         public string Username { get; set; }
-        public TeamName Team { get; set; }
+        public DTOTeam Team { get; set; }
 
-        public DTOPlayer(string name, string username,TeamName team)
+        public DTOPlayer(string name, string username,DTOTeam team)
         {
             this.Name = name;
             this.Username = username;

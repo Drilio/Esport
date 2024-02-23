@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Esport.Back.Domain
 {
-    public class Team
+    public class ETeam
     {
         public int Id { get; set; }
 
         public string Name { get; set; }
 
-        public List<Player> Players { get; set; }
+        public List<EPlayer> Players { get; set; }
 
         public List<StatByEntities> Statistics { get; set; }
 
@@ -20,7 +20,7 @@ namespace Esport.Back.Domain
 
         public List<Statistic> Results { get; set; }
 
-        public Team(int Id, string Name)
+        public ETeam(int Id, string Name)
         {
             this.Id = Id;
             this.Name = Name;

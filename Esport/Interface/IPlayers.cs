@@ -8,7 +8,7 @@ namespace Esport.Interface
         int Id { get; set; }
         string Name { get; set; }
         string Username { get; set; }
-        TeamName Team { get; set; }
+        DTOTeam Team { get; set; }
     }
 
     public interface ISelectedPlayer : IPlayers

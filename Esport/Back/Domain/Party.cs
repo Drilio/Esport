@@ -11,11 +11,11 @@ namespace Esport.Back.Domain
         public int Id { get; set; }
         public string Game { get; set; }
 
-        public List<Player> Players { get; set; }
+        public List<EPlayer> Players { get; set; }
 
-        public List<Team> Teams { get; set; }
+        public List<ETeam> Teams { get; set; }
 
-        public Team Winner { get; set; }
+        public ETeam Winner { get; set; }
 
         public DateTime Date { get; set; }
 

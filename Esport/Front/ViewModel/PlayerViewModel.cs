@@ -1,17 +1,19 @@
 ﻿using Esport.Back.Service.Players;
+using Esport.Back.Service.Teams;
 using Esport.Front.Model;
 using Esport.Interface;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
+using Telerik.Maui.Controls;
 
 namespace Esport.Front.ViewModel
 {
     public class PlayerViewModel:INotifyPropertyChanged
     {
-        private readonly SPlayer servicePlayer;
         public event PropertyChangedEventHandler? PropertyChanged;
+        private readonly SPlayer servicePlayer;
         private readonly STeam serviceTeam;
 
         private MPlayer _selectedPlayer;
@@ -40,10 +42,7 @@ namespace Esport.Front.ViewModel
                 }
             }
         }
-        public ObservableCollection<MPlayer> Players { get; private set; }
-        public ObservableCollection<MTeam> Teams { get; private set; }
         private string _name;
-
         public string Name
         {
             get { return _name; }
@@ -61,29 +60,36 @@ namespace Esport.Front.ViewModel
                     OnPropertyChanged();
             }
         }
+        
 
-
+        private bool _isSelected;
+                public bool IsSelected
+                {
+                    get => _isSelected;
+                    set
+                    {
+                        if (_isSelected != value)
+                        {
+                            _isSelected = value;
+                            OnPropertyChanged(nameof(IsSelected));
+                        }
+                    }
+                }
+        //Interface permettant de lier les boutons aux fonctions
         public ICommand AddPlayerCommand { get; }
         public ICommand ModifyPlayerCommand { get; }
         public ICommand DeletePlayerCommand { get; }
-        private bool _isSelected;
-        public bool IsSelected
-        {
-            get => _isSelected;
-            set
-            {
-                if (_isSelected != value)
-                {
-                    _isSelected = value;
-                    OnPropertyChanged(nameof(IsSelected));
-                }
-            }
-        }
+
+        //
+        public ObservableCollection<MTeam> Teams { get; private set; }
+        public ObservableCollection<MPlayer> Players { get; private set; }
+        
 
         public PlayerViewModel()
         {
             servicePlayer = new SPlayer();
             serviceTeam = new STeam();
+            
             Players = new ObservableCollection<MPlayer>(servicePlayer.GetPlayer().Select(x=> new MPlayer(x)));
             Teams = new ObservableCollection<MTeam>();
             foreach (var team in serviceTeam.GetTeams())
@@ -95,6 +101,7 @@ namespace Esport.Front.ViewModel
             DeletePlayerCommand = new Command(DeletePlayer);
         }
 
+        //Fonctions permettant l'ajout, la suppression et la modification d'un joueur
         public void AddPlayer()
         {
             if (SelectedTeam != null)
@@ -112,24 +119,21 @@ namespace Esport.Front.ViewModel
                 servicePlayer.ModifyPlayer(SelectedPlayer.Id, Name, Username, SelectedTeam);
                 SelectedPlayer.Name = Name;
                 SelectedPlayer.Username = Username;
-                SelectedPlayer.Team = new Back.Persistence.CRUD.DataTransferObject.TeamName( SelectedTeam);
+                SelectedPlayer.Team = new Back.Persistence.CRUD.DataTransferObject.DTOTeam( SelectedTeam);
             }
         }
 
         public void DeletePlayer()
         {
-            
-                if (IsSelected)
-                {
-                    Players.Remove(SelectedPlayer);
-                    servicePlayer.DeletePlayer(SelectedPlayer.Id);
-                }
-            
-
-            
+            if (IsSelected)
+            {
+                Players.Remove(SelectedPlayer);
+                servicePlayer.DeletePlayer(SelectedPlayer.Id);
+            }
             SelectedPlayer = null;
         }
 
+        //Permet de remettre les champs vides
         private void ClearFields()
         {
             Name = string.Empty;

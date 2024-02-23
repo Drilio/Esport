@@ -106,7 +106,6 @@
 
 	<ItemGroup>
 	  <Folder Include="Back\DataBase\" />
-    <Folder Include="Back\Domain\" />
 	</ItemGroup>
 
 </Project>
