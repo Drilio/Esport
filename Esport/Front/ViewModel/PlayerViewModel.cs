@@ -47,7 +47,9 @@ namespace Esport.Front.ViewModel
         public string Name
         {
             get { return _name; }
-            set { _name = value; }
+            set { _name = value; 
+                    OnPropertyChanged();
+            }
         }
 
         private string _username;
@@ -55,7 +57,9 @@ namespace Esport.Front.ViewModel
         public string Username
         {
             get { return _username; }
-            set { _username = value; }
+            set { _username = value; 
+                    OnPropertyChanged();
+            }
         }
 
 

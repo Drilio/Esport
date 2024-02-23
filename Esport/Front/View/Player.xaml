@@ -37,7 +37,7 @@ xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"
                     </telerik:DataGridTemplateColumn>
                     <telerik:DataGridTextColumn HeaderText="Pseudo" DataMemberBinding="{Binding Username}" />
                     <telerik:DataGridTextColumn HeaderText="Nom" DataMemberBinding="{Binding Name}" />
-                    <telerik:DataGridTextColumn HeaderText="Équipe" DataMemberBinding="{Binding Teams}"  />
+                    <telerik:DataGridTextColumn HeaderText="Équipe" DataMemberBinding="{Binding Team.Name}"  />
                     <telerik:DataGridTemplateColumn>
                         <telerik:DataGridTemplateColumn.CellContentTemplate>
                             <DataTemplate>

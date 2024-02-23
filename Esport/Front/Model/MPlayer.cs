@@ -42,9 +42,9 @@ namespace Esport.Front.Model
         {
             DateTime date=new DateTime();
             this.Id=(int)date.Millisecond;
-            this.Name= Name;
-            this.Username= Username;
-            this.Team = Team;
+            this.Name= name;
+            this.Username= username;
+            this.Team = new TeamName(team);
         }
         public MPlayer(IPlayers players)
         {

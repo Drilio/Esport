@@ -1,4 +1,5 @@
-﻿using Esport.Interface;
+﻿using Esport.Front.Model;
+using Esport.Interface;
 
 namespace Esport.Back.Persistence.CRUD.DataTransferObject
 {
@@ -16,5 +17,10 @@ namespace Esport.Back.Persistence.CRUD.DataTransferObject
             this.Name = team.Name;
             this.id = team.id;
         }
+
+        public TeamName( MTeam team) {
+            this.Name = team.Name;
+            this.id = team.id;
+                }
     }
 }
