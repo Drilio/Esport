@@ -40,10 +40,12 @@ namespace Esport.Front.Model
                 }
             }
         }
+
+        //GUI permet de generer un id unique
         public MPlayer(string name, string username, MTeam team)
         {
-            DateTime date=new DateTime();
-            this.Id=(int)date.Millisecond;
+            Guid id = Guid.NewGuid();
+            this.Id = Math.Abs(id.GetHashCode());
             this.Name= name;
             this.Username= username;
             this.Team = new DTOTeam(team);
@@ -58,8 +60,8 @@ namespace Esport.Front.Model
 
         public MPlayer(string name,string username, int teamId)
         {
-            DateTime date = new DateTime();
-            this.Id = (int)date.Millisecond;
+            Guid id = Guid.NewGuid();
+            this.Id = Math.Abs(id.GetHashCode());
             this.Name= name;
             this.Username= username;
             this.TeamId= teamId;

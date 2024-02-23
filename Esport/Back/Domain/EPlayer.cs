@@ -15,8 +15,8 @@ namespace Esport.Back.Domain
         public List<StatByEntities> Statistics { get; set; }
         public EPlayer(string name, string nickname, ETeam team)
         {
-            DateTime date = new DateTime();
-            this.Id = (int)date.Millisecond;
+            Guid id = Guid.NewGuid();
+            this.Id = Math.Abs(id.GetHashCode());
             Name = name;
             Username = nickname;
             Team = team;
