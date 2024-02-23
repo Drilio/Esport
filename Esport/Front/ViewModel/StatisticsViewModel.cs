@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Esport.Back.Service.Games;
+using Esport.Back.Service.Teams;
 using Esport.Back.Service.VideoGames;
 using Esport.Front.Model;
 
@@ -25,9 +26,12 @@ namespace Esport.Front.ViewModel
         private SCreateGame _createGame = new SCreateGame();
 
         private SGetAllGames _getAllGames = new SGetAllGames();
+
+        private SGetTeamsNames _getTeamsNames = new SGetTeamsNames();
         public MGame GameToCreate { get; set; }
         public List<MGame> ListOfAllGames { get; set; }
 
+        public List<string> AllTeamsNames { get; set; }
         private ObservableCollection<MGame> ObservableGame { get; set;}
         //Permet de créer un jeu
         public void AddGame()
@@ -49,6 +53,8 @@ namespace Esport.Front.ViewModel
             this.ListOfAllGames = _getAllGames.GetAllGames()
                 .Select(g => new MGame(g))
                 .ToList();
+            //Récupération des équipe
+            this.AllTeamsNames = _getTeamsNames.GetTeamsName();
         }
 
         //Constructeur Statistics

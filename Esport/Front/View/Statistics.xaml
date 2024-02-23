@@ -61,14 +61,23 @@
                         SelectedIndex="{Binding GameToCreate.IdVideoGame}"
                         ItemsSource="{Binding PickerVideoGame}">
                     </Picker>
-                    <Label 
+                    <Label
                         Grid.Row="3"
+                        Grid.Column="0"
+                        VerticalOptions="{StaticResource vertOptions}">Team : </Label>
+                    <Picker
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        ItemsSource="{Binding AllTeamsNames}"
+                        ></Picker>
+                    <Label 
+                        Grid.Row="4"
                         Grid.Column="0"
                         VerticalOptions="{StaticResource vertOptions}">C'est quoi ton Blaze ?</Label>
                     <Entry 
                         x:Name="PlayerName"
                         Placeholder="AlyPGMdu38"
-                        Grid.Row="3"
+                        Grid.Row="4"
                         Grid.Column="1"
                         Text="{Binding GameToCreate.PlayersId}"
                         />
