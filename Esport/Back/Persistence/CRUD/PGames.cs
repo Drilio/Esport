@@ -47,9 +47,10 @@ namespace Esport.Back.Persistence.CRUD
         }
 
         //Fonction qui fournis la liste des parties de manière asynchrone
-        public async Task LoadPlayersAsync()
+        public async Task<List<EGame>> LoadGamesAsync()
         {
             ListOfGames = await ObjectSerializer.DeserializeFromFile<List<EGame>>(filePath) ?? new List<EGame>();
+            return ListOfGames;
         }
 
         /*Fonction Qui sauvegarde en asyncrone la sauvegarde et renvoie un bouléen pour que le reste de la stack s'execute une fois

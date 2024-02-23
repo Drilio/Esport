@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Esport.Front.Model
 {
-    internal class MGame : INotifyPropertyChanged
+    public class MGame : INotifyPropertyChanged, IGame
     {
         private int _id { get; set; }
         public int Id
@@ -30,7 +30,7 @@ namespace Esport.Front.Model
             }
         }
         private List<int> _playersId { get; set; }
-        public List<int> PlayersID
+        public List<int> PlayersId
         {
             get { return _playersId; }
             set
