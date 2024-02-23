@@ -12,7 +12,7 @@ namespace Esport.Back.Domain
         public string Description { get; set; }
         public string Title { get; set; }
         public string Category { get; set; }
-
+        //Constructeur
         public EVideoGame(int Id, string Description, string Title, string Category) {
             this.Id = Id;
             this.Description = Description;

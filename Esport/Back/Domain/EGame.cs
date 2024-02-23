@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Esport.Interface;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,6 +26,17 @@ namespace Esport.Back.Domain
             this.PlayersId = PlayersId;
             this.TeamsId = TeamsId;
             this.WinnerTeamId = WinnerTeamId;
+            this.Date = Date;
+        }
+
+        //Constructeur avec interface
+        public EGame(IGame InterfaceGame) { 
+        
+            this.Id = InterfaceGame.Id;
+            this.IdVideoGame = InterfaceGame.IdVideoGame;
+            this.PlayersId = InterfaceGame.PlayersId;
+            this.TeamsId = InterfaceGame.TeamsId;
+            this.WinnerTeamId = InterfaceGame.WinnerTeamId;
             this.Date = Date;
         }
 

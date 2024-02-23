@@ -11,6 +11,7 @@ namespace Esport.Front.ViewModel
 {
     public class StatisticsViewModel
     {
+
         public ICommand CreateGame {  get; set; }
         public List<MTitleVideoGame> PickerVideoGame { get; set; }
         public List<string> PickerWinLoose { get; set; } = new List<string> { "Win", "GROS LOOSER TU PUES" };

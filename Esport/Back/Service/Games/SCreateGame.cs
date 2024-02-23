@@ -1,4 +1,6 @@
-﻿using Esport.Interface;
+﻿using Esport.Back.Domain;
+using Esport.Back.Persistence.CRUD;
+using Esport.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,13 +11,15 @@ namespace Esport.Back.Service.Games
 {
     internal class SCreateGame
     {
-        //Initialisation de l'objet Game qui servira au Serialize
-        private IVideoGame gameToSave { get; set; }
-        
+        //implémentation de l'interface
+        private PGames _persitenceGame = new PGames();
 
-        public void SaveGame(IVideoGame gameToSave)
+        /*Prend une instensiation de l'interface Game et la renvoie à la couche de persistence
+        une fois transformer en EGame afin de créer une nouvelle partie de jeu*/
+        public void SaveGame( IGame gameToSave)
         {
-
+            EGame newGame = new EGame(gameToSave);
+            _persitenceGame.AddGame(newGame);
         }
     }
 }

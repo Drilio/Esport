@@ -27,10 +27,6 @@ namespace Esport.Front.Model
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
-        public MTitleVideoGame()
-        {
-
-        }
     public void OnPropertyChanged([CallerMemberName] string name = "") =>
     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
     }

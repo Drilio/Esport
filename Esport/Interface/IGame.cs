@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Esport.Interface
 {
-    internal class IGames
+    public interface IGame
     {
         public int Id { get; set; }
         public int IdVideoGame { get; set; }
