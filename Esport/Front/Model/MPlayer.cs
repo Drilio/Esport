@@ -58,10 +58,9 @@ namespace Esport.Front.Model
             Username = players.Username;
         }
 
-        public MPlayer(string name,string username, int teamId)
+        public MPlayer(int id,string name,string username, int teamId)
         {
-            Guid id = Guid.NewGuid();
-            this.Id = Math.Abs(id.GetHashCode());
+            this.Id = id;
             this.Name= name;
             this.Username= username;
             this.TeamId= teamId;

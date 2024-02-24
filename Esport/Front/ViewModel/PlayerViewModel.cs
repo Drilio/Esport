@@ -97,19 +97,13 @@ namespace Esport.Front.ViewModel
                 MPlayer p = new MPlayer(Name, Username, SelectedTeam);
                 servicePlayer.AddPlayer(p.Id,p.Name,p.Username, p.Team);
                 Players.Add(p);
-                //ClearFields();
+                ClearFields();
             }
         }
         // Méthode pour modifier un joueur
         public void ModifyPlayer()
         {
-            if (SelectedPlayer != null && SelectedTeam != null)
-            {
-                servicePlayer.ModifyPlayer(SelectedPlayer.Id, Name, Username, SelectedTeam);
-                SelectedPlayer.Name = Name;
-                SelectedPlayer.Username = Username;
-                SelectedPlayer.Team = new Back.Persistence.CRUD.DataTransferObject.DTOTeam( SelectedTeam);
-            }
+            servicePlayer.ModifyPlayer(Id, Name, Username, SelectedTeam);
         }
         // Méthode pour supprimer un joueur
         public void DeletePlayer()

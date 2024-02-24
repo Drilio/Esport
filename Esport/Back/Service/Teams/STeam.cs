@@ -8,7 +8,7 @@ namespace Esport.Back.Service.Teams
     {
         public List<ITeam> Teams { get; set; } = new List<ITeam>();
 
-        private PTeam _team = new PTeam();
+        private PTeams _team = new PTeams();
 
         public List<ITeam> GetTeamsById(int id)
         {

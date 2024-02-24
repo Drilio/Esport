@@ -50,7 +50,6 @@ namespace Esport.Back.Persistence.CRUD
                 if (item.Id == id)
                 {
                     Players.Remove(item);
-                    break;
                 }
             }
         }
