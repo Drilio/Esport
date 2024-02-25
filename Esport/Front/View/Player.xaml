@@ -49,8 +49,15 @@ xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"
                 </telerik:RadDataGrid.Columns>
             </telerik:RadDataGrid>
             <Label Text="ID du joueur a supprimer" />
-            <telerik:RadEntry Text="{Binding Id}"/>
-            <telerik:RadButton Text="Supprimer" Command="{Binding DeletePlayerCommand}"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <telerik:RadEntry Text="{Binding Id}" Grid.Column="0"/>
+                <telerik:RadButton Text="Supprimer" Command="{Binding DeletePlayerCommand}" Grid.Column="1"/>   
+            </Grid>
+            
 
         </VerticalStackLayout>
     </ScrollView>
